@@ -23,5 +23,6 @@ public class OpenGoogle {
 
         // Close the browser
         driver.quit();
+		
     }
 }

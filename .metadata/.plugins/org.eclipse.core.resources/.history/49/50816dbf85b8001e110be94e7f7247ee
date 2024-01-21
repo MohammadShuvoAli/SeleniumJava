@@ -1,0 +1,73 @@
+package com.selenium.java.locators;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.util.List;
+
+public class XPATH_Axes {
+
+    public static void main(String[] args) {
+        System.setProperty("webdriver.chrome.driver", "C:\\drivers\\chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(5, java.util.concurrent.TimeUnit.SECONDS);
+
+        driver.get("https://money.rediff.com/gainers/bse/daily/groupa");
+
+        // Self
+        System.out.println("Self:");
+        String company_name_self = driver.findElement(By.xpath("//a[contains(text(), 'Zomato')]/self::a")).getText();
+        System.out.println(company_name_self);
+
+        // Parent
+        System.out.println("Parent:");
+        String company_name_parent = driver.findElement(By.xpath("//a[contains(text(), 'Zomato')]/parent::td")).getText();
+        System.out.println(company_name_parent);
+
+        // Child
+        System.out.println("Child:");
+        List<WebElement> company_name_child = driver.findElements(By.xpath("//a[contains(text(),'Zomato')]/ancestor::tr/child::td"));
+        for (WebElement company : company_name_child) {
+            System.out.print(company.getText() + " ");
+        }
+        System.out.println();
+
+        // Ancestor
+        System.out.println("Ancestor:");
+        String company_name_ancestor = driver.findElement(By.xpath("//a[contains(text(),'Zomato')]/ancestor::tr")).getText();
+        System.out.println(company_name_ancestor);
+
+        // Descendant
+        System.out.println("Descendant:");
+        List<WebElement> company_name_descendant = driver.findElements(By.xpath("//a[contains(text(), 'Zomato')]/ancestor::tr/descendant::*"));
+        for (WebElement company : company_name_descendant) {
+            System.out.print(company.getText() + " ");
+        }
+        System.out.println();
+
+        // Following
+        System.out.println("Following:");
+        List<WebElement> company_name_following = driver.findElements(By.xpath("//a[contains(text(), 'Zomato')]/ancestor::tr/following::*"));
+        System.out.println("No. of Nodes: " + company_name_following.size());
+
+        // Following Sibling
+        System.out.println("Following Sibling:");
+        List<WebElement> company_name_following_sibling = driver.findElements(By.xpath("//a[contains(text(), 'Zomato')]/ancestor::tr/following-sibling::*"));
+        System.out.println("No. of Nodes: " + company_name_following_sibling.size());
+
+        // Preceding
+        System.out.println("Preceding:");
+        List<WebElement> company_name_preceding = driver.findElements(By.xpath("//a[contains(text(), 'Zomato')]/ancestor::tr/preceding::*"));
+        System.out.println("No. of Nodes: " + company_name_preceding.size());
+
+        // Preceding Following
+        System.out.println("Preceding Following:");
+        List<WebElement> company_name_preceding_following = driver.findElements(By.xpath("//a[contains(text(), 'Zomato')]/ancestor::tr/preceding-sibling::*"));
+        System.out.println("No. of Nodes: " + company_name_preceding_following.size());
+
+        driver.quit();
+    }
+}

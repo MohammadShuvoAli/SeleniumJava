@@ -1,0 +1,10 @@
+package com.selenium.java.locators;
+
+public class XPATH_Axes {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,11 @@
+package com.selenium.java.locators;
+
+public class Locators {
+
+	public static void main(String[] args) {
+		System.setProperty("webdriver.chrome.driver", "C:\\drivers\\chromedriver.exe");
+		
+
+	}
+
+}

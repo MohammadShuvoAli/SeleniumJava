@@ -1,0 +1,5 @@
+package com.selenium.java.locators;
+
+public class CSS_Locators {
+
+}

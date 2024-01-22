@@ -16,7 +16,7 @@ public class browserCommnads {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(100));
         
 
-        driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+        driver.get("https://opensource-demo.orangehrmlive.com/");
 
         driver.findElement(By.xpath("//a[normalize-space()='OrangeHRM, Inc']")).click();
 

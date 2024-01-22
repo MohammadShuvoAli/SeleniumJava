@@ -11,12 +11,10 @@ public class navigationalCommands {
         driver.manage().window().maximize();
 
         // Navigate to daraz.com.bd
-        // driver.get("https://www.daraz.com.bd/");
-        driver.navigate().to("https://www.daraz.com.bd/");
+        driver.get("https://www.daraz.com.bd/");
 
         // Navigate to foodpanda.com.bd
-        // driver.get("https://www.foodpanda.com.bd/");
-        driver.navigate().to("https://www.foodpanda.com.bd/");
+        driver.get("https://www.foodpanda.com.bd/");
 
         // Refresh the current page (foodpanda.com.bd)
         driver.navigate().refresh();

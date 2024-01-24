@@ -1,0 +1,26 @@
+package Alerts;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class AuthenticationPopup {
+
+    public static void main(String[] args) {
+        System.setProperty("webdriver.chrome.driver", "C:\\drivers\\chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+
+        // Format URL with username and password
+        // https:// {USERNAME} : {PASSWORD} @ {WEBSITE LINK}
+        String urlWithCredentials = "https://admin:admin@the-internet.herokuapp.com/basic_auth";
+        driver.get(urlWithCredentials);
+        
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        driver.quit();
+    }
+}

@@ -1,0 +1,45 @@
+package Wait_Commands;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import java.util.concurrent.TimeUnit;
+
+public class explicateWait {
+
+    public static void main(String[] args) {
+        System.setProperty("webdriver.chrome.driver", "C:\\drivers\\chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+
+        // Explicit wait declaration
+        WebDriverWait explicitWait = new WebDriverWait(driver, 10);
+        // Set the polling frequency to 2 seconds
+        explicitWait.pollingEvery(2, TimeUnit.SECONDS);
+
+        driver.get("https://www.google.com/");
+
+        WebElement searchBox = driver.findElement(By.name("q"));
+        searchBox.sendKeys("Bangladesh");
+        searchBox.submit();
+
+        WebElement searchResult = explicitWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h3[normalize-space()='Bangladesh']")));
+        searchResult.click();
+
+        // Additional sleep for demonstration purposes
+        sleep(3000);
+
+        driver.quit();
+    }
+
+    private static void sleep(long milliseconds) {
+        try {
+            Thread.sleep(milliseconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}

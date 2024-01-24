@@ -26,6 +26,12 @@ public class brokenLinks {
         for (WebElement link : allLinks) {
             String url = link.getAttribute("href");
 
+            // Skip mailto links
+            if (url.startsWith("mailto:")) {
+                System.out.println(url + " is a mailto link");
+                continue;
+            }
+
             try {
                 HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
                 connection.setRequestMethod("HEAD");
@@ -49,3 +55,4 @@ public class brokenLinks {
         driver.quit();
     }
 }
+

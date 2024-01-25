@@ -19,7 +19,7 @@ public class KeyboardActions {
         driver.get("https://text-compare.com/");
 
         WebElement field1 = driver.findElement(By.xpath("//textarea[@id='inputText1']"));
-        WebElement field2 = driver.findElement(By.xpath("//textarea[@id='inputText2']"));
+        // WebElement field2 = driver.findElement(By.xpath("//textarea[@id='inputText2']"));
 
         field1.sendKeys("Hi! I am Shuvo");
 

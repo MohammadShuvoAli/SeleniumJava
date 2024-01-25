@@ -1,0 +1,72 @@
+package FileDownloadAndUpload;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.Edge;
+import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
+public class FileDownload {
+
+    public static WebDriver chromeSetup() {
+        String location = System.getProperty("user.dir");
+        Map<String, Object> preferences = new HashMap<>();
+        preferences.put("download.default_directory", location);
+
+        ChromeOptions options = new ChromeOptions();
+        options.setExperimentalOption("prefs", preferences);
+
+        return new ChromeDriver(options);
+    }
+
+//    public static WebDriver edgeSetup() {
+//        String location = System.getProperty("user.dir");
+//        Map<String, Object> preferences = new HashMap<>();
+//        preferences.put("download.default_directory", location);
+//
+//        EdgeOptions options = new EdgeOptions();
+//        options.setExperimentalOption("prefs", preferences);
+//
+//        return new Edge(options);
+//    }
+//
+//    public static WebDriver firefoxSetup() {
+//        String location = System.getProperty("user.dir");
+//
+//        FirefoxOptions options = new FirefoxOptions();
+//        options.setPreference("browser.helperApps.neverAsk.saveToDisk", "application/msword");
+//        options.setPreference("browser.download.manager.showWhenStarting", false);
+//        options.setPreference("browser.download.folderList", 2);
+//        options.setPreference("browser.download.dir", location);
+//
+//        return new FirefoxDriver(options);
+//    }
+
+    public static void main(String[] args) {
+        // Choose the appropriate setup method based on the browser you want to use
+         WebDriver driver = chromeSetup();
+        // WebDriver driver = edgeSetup();
+        // WebDriver driver = firefoxSetup();
+
+        driver.get("https://file-examples.com/index.php/sample-documents-download/sample-doc-download/");
+        driver.manage().window().maximize();
+
+        driver.findElement(By.xpath("//tbody/tr[1]/td[5]/a[1]")).click();
+
+        // Allow some time for the file to be downloaded before quitting the driver
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        driver.quit();
+    }
+}

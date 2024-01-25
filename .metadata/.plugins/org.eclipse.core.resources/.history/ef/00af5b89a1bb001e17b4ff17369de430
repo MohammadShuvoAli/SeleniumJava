@@ -1,0 +1,38 @@
+package Screenshot;
+
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import com.google.common.io.Files;
+
+import java.io.File;
+import java.io.IOException;
+
+public class Screenshot {
+
+    public static void main(String[] args) throws InterruptedException {
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+
+        driver.get("https://bangladesh.gov.bd/index.php");
+
+        // Save screenshot to file
+        File screenshot1 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        File destination1 = new File(System.getProperty("user.dir") + "/screenshot1.png");
+        try {
+            Files.copy(screenshot1.toPath(), destination1.toPath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Thread.sleep(2000);
+
+        // Save screenshot directly
+        ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE)
+                .renameTo(new File(System.getProperty("user.dir") + "/screenshot2.png"));
+
+        driver.quit();
+    }
+}

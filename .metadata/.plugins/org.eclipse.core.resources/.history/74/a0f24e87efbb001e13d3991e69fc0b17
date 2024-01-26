@@ -1,0 +1,35 @@
+package ExcelReadAndWrite;
+
+import org.apache.poi.ss.usermodel.*;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class ExcelReader {
+
+    public static void main(String[] args) {
+        String path = "C:\\Users\\Shuvo\\Desktop\\testdata.xlsx";
+
+        try (FileInputStream fileInputStream = new FileInputStream(path);
+             Workbook workbook = WorkbookFactory.create(fileInputStream)) {
+
+            Sheet sheet = workbook.getSheet("Sheet1");
+
+            int rows = sheet.getPhysicalNumberOfRows();
+            int columns = sheet.getRow(0).getPhysicalNumberOfCells();
+
+            // Reading all the rows and columns from the Excel sheet
+            for (int r = 0; r < rows; r++) {
+                Row row = sheet.getRow(r);
+                for (int c = 0; c < columns; c++) {
+                    Cell cell = row.getCell(c, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK);
+                    System.out.print(cell.toString() + "     ");
+                }
+                System.out.println();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}

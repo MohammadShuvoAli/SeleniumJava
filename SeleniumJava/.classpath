@@ -7,5 +7,11 @@
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="C:/drivers/selenium-server-4.16.1.jar"/>
+	<classpathentry kind="lib" path="C:/drivers/commons-io-2.15.1/commons-io-2.15.1.jar"/>
+	<classpathentry kind="lib" path="C:/drivers/commons-io-2.15.1/commons-io-2.15.1-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/drivers/commons-io-2.15.1/commons-io-2.15.1-sources.jar"/>
+	<classpathentry kind="lib" path="C:/drivers/commons-io-2.15.1/commons-io-2.15.1-tests.jar"/>
+	<classpathentry kind="lib" path="C:/drivers/commons-io-2.15.1/commons-io-2.15.1-test-sources.jar"/>
+	<classpathentry kind="lib" path="C:/drivers/ashot-1.5.4/ashot-1.5.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

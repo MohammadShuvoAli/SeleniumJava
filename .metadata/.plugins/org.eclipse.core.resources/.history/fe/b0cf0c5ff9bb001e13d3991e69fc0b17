@@ -1,0 +1,39 @@
+package Screenshot;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.apache.commons.io.FileUtils;
+
+import java.io.File;
+
+public class ScreenshotElements {
+
+    public static void main(String[] args) {
+        WebDriver driver = new ChromeDriver();
+
+        driver.get("https://bangladesh.gov.bd/index.php");
+        driver.manage().window().maximize();
+
+        WebElement logo = driver.findElement(By.xpath("//img[@alt='গণপ্রজাতন্ত্রী বাংলাদেশ']"));
+
+        // Convert WebDriver instance to TakesScreenshot
+        TakesScreenshot screenshotDriver = (TakesScreenshot) driver;
+
+        // Use getScreenshotAs method to capture the screenshot
+        File screenshot = screenshotDriver.getScreenshotAs(OutputType.FILE);
+
+        try {
+            // Copy the screenshot file to the desired location
+            FileUtils.copyFile(screenshot, new File(System.getProperty("user.dir") + "/src/Screenshot/ScreenshotElements.png"));
+            System.out.println("Screenshot Taken!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            driver.quit();
+        }
+    }
+}

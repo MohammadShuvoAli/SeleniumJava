@@ -1,35 +1,30 @@
 package Screenshot;
 
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.apache.commons.io.FileUtils;
+import ru.yandex.qatools.ashot.AShot;
+import ru.yandex.qatools.ashot.Screenshot;
+import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 
+import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
 
 public class ScreenshotAshot {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         WebDriver driver = new ChromeDriver();
 
         driver.get("https://bangladesh.gov.bd/index.php");
         driver.manage().window().maximize();
 
-        TakesScreenshot screenshot = (TakesScreenshot) driver;
+        // Use AShot to take a screenshot
+        Screenshot screenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(driver);
 
-        File srcFile = screenshot.getScreenshotAs(OutputType.FILE);
+        // Save the screenshot to a file
+        ImageIO.write(screenshot.getImage(), "PNG", new File(System.getProperty("user.dir") + "/src/Screenshot/ScreenshotAshot.png"));
 
-        File desFile = new File(System.getProperty("user.dir") + "/src/Screenshot/Screenshot.png");
-
-        try {
-            FileUtils.copyFile(srcFile, desFile);
-            System.out.println("Screenshot Taken!");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        System.out.println("Screenshot Taken!");
         driver.quit();
     }
 }

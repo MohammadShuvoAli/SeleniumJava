@@ -1,0 +1,32 @@
+package Screenshot;
+
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import ru.yandex.qatools.ashot.AShot;
+import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
+
+import org.apache.commons.io.FileUtils;
+
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
+public class Screenshot {
+
+    public static void main(String[] args) {
+        WebDriver driver = new ChromeDriver();
+
+        driver.get("https://bangladesh.gov.bd/index.php");
+        driver.manage().window().maximize();
+
+        Screenshot s = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(driver);
+        
+        ImageIO.write(s.getImage(), "PNG", new File(System.getProperty("user.dir") + "/src/ScreenshotAshot/ScreenshotAshot.png"));
+        
+        System.out.println("Screenshot Taken!");
+        driver.quit();
+    }
+}

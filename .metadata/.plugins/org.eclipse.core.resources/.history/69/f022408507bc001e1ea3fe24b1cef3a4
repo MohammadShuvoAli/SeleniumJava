@@ -1,0 +1,46 @@
+package FileDownloadAndUpload;
+
+import java.time.Duration;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class FileUpload {
+
+    public static void main(String[] args) {
+        // Set the path to the chromedriver executable
+        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+
+        // Create a new instance of the Chrome driver
+        WebDriver driver = new ChromeDriver();
+        
+        // Maximize the browser window
+        driver.manage().window().maximize();
+        
+        // Set implicit wait
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+        // Navigate to the target website
+        driver.get("https://mdbootstrap.com/docs/b4/jquery/plugins/file-upload/");
+
+        // Set the file path
+        String filePath = "C:\\Users\\Shuvo\\Desktop\\sample.pdf";
+        
+        // Find the file input element by XPath
+        WebElement fileInput = driver.findElement(By.xpath("//input[@id='input-file-now']"));
+        
+        // Send the file path to the file input element
+        fileInput.sendKeys(filePath);
+
+        // Wait for 5 seconds (you may need to adjust this based on your needs)
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Close the browser
+        driver.quit();
+    }
+}

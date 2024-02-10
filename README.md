@@ -79,23 +79,23 @@ This Selenium project, built with Java, is a comprehensive automation suite for 
 - **MouseScroll.java:** Performs mouse scroll actions.
 - **Slider.java:** Demonstrates slider manipulation.
 
-### Screenshot
-- **Screenshot.java:** Captures full-page screenshots.
-- **Screenshot.png:** Sample screenshot.
-- **ScreenshotAshot.java:** Captures screenshots using AShot library.
-- **ScreenshotAshot.png:** Sample screenshot using AShot.
-- **ScreenshotElements.java:** Captures screenshots of specific elements.
-- **ScreenshotElements.png:** Sample screenshot of elements.
-
 ### Table
 - **DynamicTable.java:** Handles dynamic tables.
 - **StaticTable.java:** Works with static tables.
 
 ### TestCaseAutomation
-- **NopCommerce_Login_Test_Case.png:** Screenshot of a test case.
+- **NopCommerce_Login_Test_Case.png:** ![Screenshot of a test case](https://github.com/MohammadShuvoAli/SeleniumJava/blob/main/SeleniumJava/src/TestCaseAutomation/NopCommerce_Login_Test_Case.png)
 - **TestCaseAutomation.java:** Sample test case automation script.
 
 ### Wait_Commands
 - **explicitWait.java:** Implements explicit waits.
 - **fluentWait.java:** Demonstrates fluent waits.
 - **implicitWait.java:** Implements implicit waits.
+
+### Screenshot
+- **Screenshot.java:** Captures full-page screenshots.
+- **Screenshot.png:** ![Sample full-page screenshot](https://github.com/MohammadShuvoAli/SeleniumJava/blob/main/SeleniumJava/src/Screenshot/Screenshot.png)
+- **ScreenshotAshot.java:** Captures screenshots using AShot library.
+- **ScreenshotAshot.png:** ![Sample AShot screenshot](https://github.com/MohammadShuvoAli/SeleniumJava/blob/main/SeleniumJava/src/Screenshot/ScreenshotAshot.png)
+- **ScreenshotElements.java:** Captures screenshots of specific elements.
+- **ScreenshotElements.png:** ![Sample element screenshot](https://github.com/MohammadShuvoAli/SeleniumJava/blob/main/SeleniumJava/src/Screenshot/ScreenshotElements.png)
